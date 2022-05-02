@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detailed news</title>
+  </head>
+  <body>
+    <!-- Same navbar with same functionality  -->
+    <!-- Append detailed news in div with id "detailed_news"  -->
+    <div id="detailed_news"></div>
+  </body>
+</html>
+
+<script>
+  let newsArr = JSON.parse(localStorage.getItem("news"))
+  newsArr.forEach(function(elem){
+    let box = document.createElement("div");
+    let image = document.createElement("img");
+    image.src=elem.urlToImage;
+
+    let box1 = document.createElement("div");
+    box1.append(image);
+    let box2 = document.createElement("div");
+    let title = document.createElement("h4");
+     title.innerText=elem.title
+     let des = document.createElement("p");
+     des.innerText=elem.description;
+box2.append(title,des)
+
+box.append(box1,box2)
+
+document.querySelector("#detailed_news").append(box);
+
+
+  })
+</script>
